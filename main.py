@@ -1,34 +1,18 @@
 import sys
 
-class Set():
-    def __init__(self):
-        self.list = [0]*20
-    def add(self,x):
-        if self.list[x] == 0:
-            self.list[x] = 1
-    def remove(self,x):
-        if self.list[x] == 1:
-            self.list[x] = 0
-    def check(self,x):
-        if self.list[x] == 1:
-            print(1)
-        else:
-            print(0)
-    def toggle(self,x):
-        if self.list[x] == 0:
-            self.list[x] = 1
-        else:
-            self.list[x] = 0
-    def all(self):
-        self.list = [1]*20
-    def empty(self):
-        self.list = [0]*20
+N, M = map(int, sys.stdin.readline().strip().split())
+arr = list(map(int, sys.stdin.readline().strip().split()))
+mem = []
 
-n = int(input())
-set = Set()
-for _ in range(n):
-    order = sys.stdin.readline().split()
-    if len(order) == 1:
-        getattr(set,order[0])()
+for i in range(len(arr)):
+    if i == 0:
+        mem.append(arr[i])
     else:
-        getattr(set,order[0])(int(order[1])-1)
+        mem.append(mem[i - 1] + arr[i])
+print(mem)
+for i in range(M):
+    a, b = map(int, sys.stdin.readline().strip().split())
+    if a == 1:
+        print(mem[b - 1])
+    else:
+        print(mem[b - 1] - mem[a - 2])

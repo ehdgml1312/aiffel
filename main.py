@@ -26,7 +26,7 @@ class Set():
 
 n = int(input())
 set = Set()
-
+x=13
 for _ in range(n):
     order = sys.stdin.readline().split()
     if len(order) == 1:

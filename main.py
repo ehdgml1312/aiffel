@@ -3,7 +3,7 @@ import sys
 N, M = map(int, sys.stdin.readline().strip().split())
 arr = list(map(int, sys.stdin.readline().strip().split()))
 mem = []
-fd=34
+
 for i in range(len(arr)):
     if i == 0:
         mem.append(arr[i])

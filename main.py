@@ -1,18 +1,38 @@
 import sys
+def search(s,k):
+    l = 0
+    r = n-1
 
-N, M = map(int, sys.stdin.readline().strip().split())
-arr = list(map(int, sys.stdin.readline().strip().split()))
-mem = []
+    while l <= r:
+        m = (l + r) // 2
 
-for i in range(len(arr)):
-    if i == 0:
-        mem.append(arr[i])
+        if s[m] == k:
+            print(a[k])
+            return
+        elif s[m] < k:
+            l = m + 1
+        else:
+            r = m - 1
+    print(0)
+    return
+
+
+n = int(sys.stdin.readline())
+s1 = list(map(int,sys.stdin.readline().split()))
+m = int(sys.stdin.readline())
+s2 = list(map(int,sys.stdin.readline().split()))
+
+s1.sort()
+
+a = {}
+for num in s1:
+    if num not in a:
+        a[num] = 1
     else:
-        mem.append(mem[i - 1] + arr[i])
-print(mem)
-for i in range(M):
-    a, b = map(int, sys.stdin.readline().strip().split())
-    if a == 1:
-        print(mem[b - 1])
-    else:
-        print(mem[b - 1] - mem[a - 2])
+        a[num] += 1
+
+for num in s2:
+    search(s1,num)
+
+
+
